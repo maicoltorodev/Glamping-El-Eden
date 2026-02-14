@@ -127,10 +127,10 @@ export default function Home() {
       )}
 
       {/* Header */}
-      <header className="sticky top-0 z-40 border-b border-white/10 bg-black/60 backdrop-blur-xl">
+      <header className="sticky top-0 z-40 border-b border-white/10 bg-black/60 backdrop-blur-xl animate-float-in">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative flex items-center justify-between h-16">
-            <div className="flex items-center gap-3 min-w-0">
+            <div className="flex items-center gap-3 min-w-0 animate-slide-in-left">
               <button
                 type="button"
                 aria-label="Ver logo"
@@ -147,7 +147,7 @@ export default function Home() {
                 />
               </button>
             </div>
-            <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 text-center">
+            <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 text-center animate-fade-in-up">
               <div className="text-gradient-flow font-brand text-xl sm:text-2xl font-extrabold tracking-tight">
                 Glamping el Edén
               </div>
@@ -157,7 +157,7 @@ export default function Home() {
               type="button"
               aria-label="Abrir menú"
               onClick={() => setIsMenuOpen(true)}
-              className="h-10 w-10 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors grid place-items-center"
+              className="h-10 w-10 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors grid place-items-center animate-slide-in-right"
             >
               <svg
                 className="h-5 w-5 text-zinc-100"
@@ -394,9 +394,9 @@ export default function Home() {
       )}
 
       {/* Main Content */}
-      <main className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-slide-in-up">
         <section className="mb-8 animate-float-in">
-          <div className="glass rounded-3xl p-6 sm:p-8 overflow-hidden">
+          <div className="glass rounded-3xl p-6 sm:p-8 overflow-hidden animate-scale-in">
             <div className="text-center space-y-6">
               {/* Imagen Placeholder */}
               <div className="relative -m-8 mb-8">
@@ -535,10 +535,11 @@ export default function Home() {
                   No encontramos unidades disponibles para las fechas seleccionadas.
                 </p>
                 <button
+                  type="button"
                   onClick={() => setStep('dates')}
-                  className="btn-primary"
+                  className="btn-secondary animate-scale-in"
                 >
-                  Cambiar fechas
+                  ← Atrás
                 </button>
               </div>
             )}
