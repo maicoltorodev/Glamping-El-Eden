@@ -1,0 +1,22 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="g" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(610 170) rotate(90) scale(860 1060)">
+      <stop stop-color="#60A5FA" stop-opacity="0.25"/>
+      <stop offset="0.55" stop-color="#22D3EE" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="#000"/>
+  <rect width="1200" height="800" fill="url(#g)"/>
+
+  <path d="M300 600 C360 440 470 340 600 340 C730 340 840 440 900 600" stroke="#E0F2FE" stroke-opacity="0.75" stroke-width="16" stroke-linecap="round"/>
+  <path d="M380 600 C425 500 505 440 600 440 C695 440 775 500 820 600" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="16" stroke-linecap="round"/>
+  <path d="M300 600H900" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="16" stroke-linecap="round"/>
+
+  <circle cx="620" cy="410" r="18" fill="#E0F2FE" fill-opacity="0.8"/>
+  <circle cx="560" cy="390" r="10" fill="#E0F2FE" fill-opacity="0.7"/>
+  <circle cx="680" cy="385" r="10" fill="#E0F2FE" fill-opacity="0.7"/>
+
+  <text x="96" y="690" font-family="ui-sans-serif, system-ui" font-size="44" font-weight="700" fill="#E5E7EB">Domo Estelar</text>
+  <text x="96" y="740" font-family="ui-sans-serif, system-ui" font-size="22" fill="#A1A1AA">Glamping el Edén • Placeholder</text>
+</svg>

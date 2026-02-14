@@ -1,0 +1,20 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="g" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(560 160) rotate(90) scale(860 1080)">
+      <stop stop-color="#F59E0B" stop-opacity="0.20"/>
+      <stop offset="0.55" stop-color="#34D399" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="#000"/>
+  <rect width="1200" height="800" fill="url(#g)"/>
+
+  <path d="M320 520 L600 300 L880 520" stroke="#FDE68A" stroke-opacity="0.8" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="340" y="520" width="520" height="170" rx="28" fill="#FFFFFF" fill-opacity="0.06" stroke="#FFFFFF" stroke-opacity="0.12"/>
+  <rect x="560" y="580" width="120" height="110" rx="18" fill="#FFFFFF" fill-opacity="0.08" stroke="#FFFFFF" stroke-opacity="0.12"/>
+  <rect x="410" y="570" width="110" height="90" rx="18" fill="#FFFFFF" fill-opacity="0.05" stroke="#FFFFFF" stroke-opacity="0.10"/>
+  <rect x="740" y="570" width="110" height="90" rx="18" fill="#FFFFFF" fill-opacity="0.05" stroke="#FFFFFF" stroke-opacity="0.10"/>
+
+  <text x="96" y="120" font-family="ui-sans-serif, system-ui" font-size="44" font-weight="700" fill="#E5E7EB">Cabaña Romántica</text>
+  <text x="96" y="170" font-family="ui-sans-serif, system-ui" font-size="22" fill="#A1A1AA">Glamping el Edén • Placeholder</text>
+</svg>

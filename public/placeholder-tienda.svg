@@ -1,0 +1,25 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="g" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 140) rotate(90) scale(820 1020)">
+      <stop stop-color="#34D399" stop-opacity="0.28"/>
+      <stop offset="0.55" stop-color="#22D3EE" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="1"/>
+    </radialGradient>
+    <linearGradient id="h" x1="120" y1="640" x2="1080" y2="640" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1220"/>
+      <stop offset="1" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="#000"/>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <rect x="96" y="560" width="1008" height="168" rx="32" fill="url(#h)" fill-opacity="0.85" stroke="#FFFFFF" stroke-opacity="0.10"/>
+
+  <path d="M250 590 L600 250 L950 590" stroke="#A7F3D0" stroke-opacity="0.8" stroke-width="10" stroke-linecap="round"/>
+  <path d="M330 590 L600 320 L870 590" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="10" stroke-linecap="round"/>
+  <path d="M250 590H950" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="10" stroke-linecap="round"/>
+
+  <rect x="542" y="460" width="116" height="130" rx="18" fill="#FFFFFF" fill-opacity="0.08" stroke="#FFFFFF" stroke-opacity="0.12"/>
+
+  <text x="144" y="628" font-family="ui-sans-serif, system-ui" font-size="40" font-weight="700" fill="#E5E7EB">Tienda de Lujo</text>
+  <text x="144" y="676" font-family="ui-sans-serif, system-ui" font-size="22" fill="#A1A1AA">Glamping el Edén • Placeholder</text>
+</svg>

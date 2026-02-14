@@ -1,0 +1,20 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="g" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 160) rotate(90) scale(860 1040)">
+      <stop stop-color="#A78BFA" stop-opacity="0.22"/>
+      <stop offset="0.55" stop-color="#34D399" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="#000"/>
+  <rect width="1200" height="800" fill="url(#g)"/>
+
+  <ellipse cx="600" cy="520" rx="330" ry="170" fill="#FFFFFF" fill-opacity="0.06" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="3"/>
+  <path d="M300 520 C340 420 450 350 600 350 C750 350 860 420 900 520" stroke="#DDD6FE" stroke-opacity="0.8" stroke-width="14" stroke-linecap="round"/>
+  <path d="M420 520 C450 460 510 430 600 430 C690 430 750 460 780 520" stroke="#34D399" stroke-opacity="0.30" stroke-width="14" stroke-linecap="round"/>
+
+  <rect x="560" y="520" width="120" height="130" rx="20" fill="#FFFFFF" fill-opacity="0.08" stroke="#FFFFFF" stroke-opacity="0.12"/>
+
+  <text x="96" y="120" font-family="ui-sans-serif, system-ui" font-size="44" font-weight="700" fill="#E5E7EB">Yurt Familiar</text>
+  <text x="96" y="170" font-family="ui-sans-serif, system-ui" font-size="22" fill="#A1A1AA">Glamping el Edén • Placeholder</text>
+</svg>
