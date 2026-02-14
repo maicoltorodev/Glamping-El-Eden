@@ -299,17 +299,13 @@ export default function Home() {
             <div className="glass rounded-3xl p-8 max-w-sm w-full mx-auto">
               <div className="text-center space-y-6">
                 <div className="relative">
-                  <div className="h-24 w-24 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden flex items-center justify-center mx-auto relative">
-                    {/* Borde animado de energía */}
-                    <div className="absolute inset-0 rounded-3xl p-[2px] bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-400 animate-gradient-flow">
-                      <div className="w-full h-full rounded-3xl bg-black/60" />
-                    </div>
+                  <div className="h-24 w-24 rounded-full overflow-hidden flex items-center justify-center mx-auto relative">
                     <Image
                       src="/logo.png"
                       alt="Glamping el Edén"
                       width={96}
                       height={96}
-                      className="h-24 w-24 object-contain relative z-10"
+                      className="w-full h-full object-contain glow-border rounded-full"
                       priority
                     />
                   </div>
@@ -401,35 +397,36 @@ export default function Home() {
           <div className="glass rounded-3xl p-6 sm:p-8 overflow-hidden">
             <div className="text-center space-y-6">
               {/* Imagen Placeholder */}
-              <div className="relative rounded-2xl overflow-hidden border border-white/10">
+              <div className="relative -m-8 mb-8">
                 {/* Desktop: SVG placeholder */}
-                <div className="hidden sm:block relative w-full h-64 sm:h-80">
-                  <div className="absolute inset-0 rounded-2xl p-[3px] bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-400 animate-gradient-flow">
-                    <div className="w-full h-full rounded-2xl bg-black/40" />
+                <div className="hidden sm:block">
+                  <div className="relative w-full max-w-2xl mx-auto h-64 sm:h-80">
+                    <img
+                      src="/placeholder-domo.svg"
+                      alt="Glamping el Edén - Experiencia única en la naturaleza"
+                      className="w-full h-full object-cover rounded-3xl glow-border"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-3xl pointer-events-none" />
+                    <div className="absolute bottom-6 left-6 right-6 text-center">
+                      <p className="text-xs font-bold tracking-widest text-emerald-200 drop-shadow-lg">GLAMPING PREMIUM</p>
+                    </div>
                   </div>
-                  <img
-                    src="/placeholder-domo.svg"
-                    alt="Glamping el Edén - Experiencia única en la naturaleza"
-                    className="w-full h-full object-cover relative z-10 rounded-2xl"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl" />
                 </div>
                 {/* Mobile: imagen real */}
-                <div className="sm:hidden relative w-full h-64 sm:h-80">
-                  <div className="absolute inset-0 rounded-2xl p-[3px] bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-400 animate-gradient-flow">
-                    <div className="w-full h-full rounded-2xl bg-black/40" />
+                <div className="sm:hidden">
+                  <div className="relative w-full h-64">
+                    <img
+                      src="/glamping.webp"
+                      alt="Glamping el Edén - Experiencia única en la naturaleza"
+                      className="w-full h-full object-cover rounded-3xl glow-border"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-3xl pointer-events-none" />
+                    <div className="absolute bottom-6 left-6 right-6 text-center">
+                      <p className="text-xs font-bold tracking-widest text-emerald-200 drop-shadow-lg">GLAMPING PREMIUM</p>
+                    </div>
                   </div>
-                  <img
-                    src="/glamping.webp"
-                    alt="Glamping el Edén - Experiencia única en la naturaleza"
-                    className="w-full h-full object-cover relative z-10 rounded-2xl"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl" />
-                </div>
-                <div className="absolute bottom-4 left-4 right-4 text-center z-20">
-                  <p className="text-xs font-semibold tracking-widest text-emerald-200/80">GLAMPING PREMIUM</p>
                 </div>
               </div>
               
