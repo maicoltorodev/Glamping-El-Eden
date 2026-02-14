@@ -21,6 +21,13 @@ const brandFont = Sora({
 export const metadata: Metadata = {
   title: "Glamping el Edén - Experiencia Única en la Naturaleza",
   description: "Reserva tu glamping de lujo en Guasca, Cundinamarca. Disponibilidad en tiempo real, precios transparentes y una experiencia inolvidable en medio de la naturaleza.",
+  openGraph: {
+    images: ["/image-metadata.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/image-metadata.jpg"],
+  },
 };
 
 export default function RootLayout({

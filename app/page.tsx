@@ -34,7 +34,7 @@ export default function Home() {
     });
   }, []);
 
-  const handleDateChange = useCallback((dateRange: DateRange) => {
+  const handleDateChange = useCallback((dateRange: DateRange) => {g
     setSelectedDates(dateRange);
     
     // Obtener unidades disponibles para esas fechas
