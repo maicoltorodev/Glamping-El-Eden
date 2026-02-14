@@ -125,6 +125,46 @@
           inset 0 0 20px rgba(52, 211, 153, 0.2);
       }
     }
+
+    /* Optimizaciones generales para móvil */
+    .glass {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .card-hover {
+      transform: translateZ(0);
+      will-change: transform;
+    }
+
+    .animate-float-in {
+      animation: float-in-mobile 400ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+    }
+
+    @keyframes float-in-mobile {
+      from {
+        opacity: 0;
+        transform: translateY(5px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Reducir animaciones en móvil */
+    .btn-primary,
+    .btn-secondary {
+      transition: all 150ms ease;
+    }
+
+    /* Optimizar scroll en móvil */
+    * {
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
   }
 
   .bg-noise {

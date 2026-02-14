@@ -1,16 +1,18 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense, useMemo, useCallback } from 'react';
 import { GlampingUnit, DateRange, Reservation, CustomerInfo } from '@/types/glamping';
 import { AvailabilityService } from '@/lib/availability';
 import { ReservationService } from '@/lib/reservations';
 import { businessRules } from '@/data/mockData';
 import DatePicker from '@/components/DatePicker';
-import UnitCard from '@/components/UnitCard';
-import PaymentForm from '@/components/PaymentForm';
-import ConfirmationModal from '@/components/ConfirmationModal';
-import ContactInfo from '@/components/ContactInfo';
+
+// Lazy loading para componentes pesados
+const UnitCard = lazy(() => import('@/components/UnitCard'));
+const PaymentForm = lazy(() => import('@/components/PaymentForm'));
+const ConfirmationModal = lazy(() => import('@/components/ConfirmationModal'));
+const ContactInfo = lazy(() => import('@/components/ContactInfo'));
 
 export default function Home() {
   const [step, setStep] = useState<'dates' | 'units' | 'payment' | 'confirmation'>('dates');
@@ -32,7 +34,7 @@ export default function Home() {
     });
   }, []);
 
-  const handleDateChange = (dateRange: DateRange) => {
+  const handleDateChange = useCallback((dateRange: DateRange) => {
     setSelectedDates(dateRange);
     
     // Obtener unidades disponibles para esas fechas
@@ -45,9 +47,9 @@ export default function Home() {
       setNotification('No hay unidades disponibles para las fechas seleccionadas');
       setTimeout(() => setNotification(null), 3000);
     }
-  };
+  }, []);
 
-  const handleUnitSelect = (unitId: string) => {
+  const handleUnitSelect = useCallback((unitId: string) => {
     const unit = availableUnits.find(u => u.id === unitId);
     if (!unit || !selectedDates) return;
 
@@ -58,9 +60,9 @@ export default function Home() {
     setCalculatedPrice(price);
     
     setStep('payment');
-  };
+  }, [availableUnits, selectedDates]);
 
-  const handlePayment = async (customerInfo: CustomerInfo) => {
+  const handlePayment = useCallback(async (customerInfo: CustomerInfo) => {
     if (!selectedUnit || !selectedDates) return;
 
     setIsProcessing(true);
@@ -86,25 +88,25 @@ export default function Home() {
     } finally {
       setIsProcessing(false);
     }
-  };
+  }, [selectedUnit, selectedDates, calculatedPrice]);
 
-  const resetBooking = () => {
+  const resetBooking = useCallback(() => {
     setStep('dates');
     setSelectedDates(null);
     setSelectedUnit(null);
     setAvailableUnits([]);
     setCalculatedPrice(0);
     setReservation(null);
-  };
+  }, []);
 
-  const formatPrice = (price: number) => {
+  const formatPrice = useCallback((price: number) => {
     return new Intl.NumberFormat('es-CO', {
       style: 'currency',
       currency: 'COP',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(price);
-  };
+  }, []);
 
   return (
     <div className="min-h-screen bg-black text-zinc-100">
@@ -299,13 +301,13 @@ export default function Home() {
             <div className="glass rounded-3xl p-8 max-w-sm w-full mx-auto">
               <div className="text-center space-y-6">
                 <div className="relative">
-                  <div className="h-24 w-24 rounded-full overflow-hidden flex items-center justify-center mx-auto relative">
+                  <div className="h-24 w-24 rounded-full border-2 border-emerald-400/50 flex items-center justify-center mx-auto relative">
                     <Image
                       src="/logo.png"
                       alt="Glamping el Edén"
                       width={96}
                       height={96}
-                      className="w-full h-full object-contain glow-border rounded-full"
+                      className="w-full h-full object-contain p-1"
                       priority
                     />
                   </div>
@@ -405,7 +407,7 @@ export default function Home() {
                       src="/placeholder-domo.svg"
                       alt="Glamping el Edén - Experiencia única en la naturaleza"
                       className="w-full h-full object-cover rounded-3xl glow-border"
-                      loading="lazy"
+                      loading="eager"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-3xl pointer-events-none" />
                     <div className="absolute bottom-6 left-6 right-6 text-center">
@@ -420,7 +422,7 @@ export default function Home() {
                       src="/glamping.webp"
                       alt="Glamping el Edén - Experiencia única en la naturaleza"
                       className="w-full h-full object-cover rounded-3xl glow-border"
-                      loading="lazy"
+                      loading="eager"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-3xl pointer-events-none" />
                     <div className="absolute bottom-6 left-6 right-6 text-center">
@@ -476,7 +478,9 @@ export default function Home() {
               />
             </div>
             <div className="lg:col-span-1">
+              <Suspense fallback={<div className="glass rounded-3xl p-6 animate-pulse">Cargando...</div>}>
               <ContactInfo />
+            </Suspense>
             </div>
           </div>
         )}
@@ -509,14 +513,15 @@ export default function Home() {
                     Math.ceil((selectedDates.checkOut.getTime() - selectedDates.checkIn.getTime()) / (1000 * 3600 * 24)) : 1;
                   
                   return (
-                    <UnitCard
-                      key={unit.id}
-                      unit={unit}
-                      onSelect={handleUnitSelect}
-                      isSelected={selectedUnit?.id === unit.id}
-                      price={price}
-                      nights={nights}
-                    />
+                    <Suspense key={unit.id} fallback={<div className="glass rounded-3xl h-96 animate-pulse" />}>
+                      <UnitCard
+                        unit={unit}
+                        onSelect={handleUnitSelect}
+                        isSelected={selectedUnit?.id === unit.id}
+                        price={price}
+                        nights={nights}
+                      />
+                    </Suspense>
                   );
                 })}
               </div>
@@ -580,22 +585,26 @@ export default function Home() {
               </div>
             </div>
             
-            <PaymentForm
-              totalAmount={calculatedPrice}
-              depositAmount={calculatedPrice * businessRules.depositPercentage}
-              onSubmit={handlePayment}
-              isLoading={isProcessing}
-            />
+            <Suspense fallback={<div className="glass rounded-3xl p-8 animate-pulse">Cargando formulario...</div>}>
+                <PaymentForm
+                  totalAmount={calculatedPrice}
+                  depositAmount={calculatedPrice * businessRules.depositPercentage}
+                  onSubmit={handlePayment}
+                  isLoading={isProcessing}
+                />
+              </Suspense>
           </div>
         )}
 
         {/* Step 4: Confirmation */}
         {step === 'confirmation' && reservation && (
-          <ConfirmationModal
-            reservation={reservation}
-            isOpen={true}
-            onClose={resetBooking}
-          />
+          <Suspense fallback={<div />}>
+            <ConfirmationModal
+              reservation={reservation}
+              isOpen={true}
+              onClose={resetBooking}
+            />
+          </Suspense>
         )}
       </main>
 
