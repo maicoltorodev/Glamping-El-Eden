@@ -22,6 +22,7 @@ export default function Home() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [notification, setNotification] = useState<string | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLogoModalOpen, setIsLogoModalOpen] = useState(false);
 
   useEffect(() => {
     // Configurar notificaciones automáticas
@@ -128,7 +129,12 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative flex items-center justify-between h-16">
             <div className="flex items-center gap-3 min-w-0">
-              <div className="h-10 w-10 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden flex items-center justify-center">
+              <button
+                type="button"
+                aria-label="Ver logo"
+                onClick={() => setIsLogoModalOpen(true)}
+                className="h-10 w-10 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden flex items-center justify-center hover:bg-white/10 transition-colors"
+              >
                 <Image
                   src="/logo.png"
                   alt="Glamping el Edén"
@@ -137,7 +143,7 @@ export default function Home() {
                   className="h-10 w-10 object-contain"
                   priority
                 />
-              </div>
+              </button>
             </div>
             <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 text-center">
               <div className="text-gradient-flow font-brand text-xl sm:text-2xl font-extrabold tracking-tight">
@@ -280,6 +286,76 @@ export default function Home() {
         </div>
       )}
 
+      {/* Modal del Logo */}
+      {isLogoModalOpen && (
+        <div className="fixed inset-0 z-50">
+          <button
+            type="button"
+            aria-label="Cerrar modal del logo"
+            onClick={() => setIsLogoModalOpen(false)}
+            className="absolute inset-0 bg-black/70"
+          />
+          <div className="absolute inset-0 flex items-center justify-center p-4">
+            <div className="glass rounded-3xl p-8 max-w-sm w-full mx-auto">
+              <div className="text-center space-y-6">
+                <div className="relative">
+                  <div className="h-24 w-24 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden flex items-center justify-center mx-auto relative">
+                    {/* Borde animado de energía */}
+                    <div className="absolute inset-0 rounded-3xl p-[2px] bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-400 animate-gradient-flow">
+                      <div className="w-full h-full rounded-3xl bg-black/60" />
+                    </div>
+                    <Image
+                      src="/logo.png"
+                      alt="Glamping el Edén"
+                      width={96}
+                      height={96}
+                      className="h-24 w-24 object-contain relative z-10"
+                      priority
+                    />
+                  </div>
+                  <div className="absolute -top-2 -right-2 bg-emerald-300/20 text-emerald-100 border border-emerald-300/30 rounded-full p-2 backdrop-blur-md">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                </div>
+                
+                <div className="space-y-2">
+                  <h3 className="text-2xl font-bold text-zinc-100 font-brand">
+                    Glamping el Edén
+                  </h3>
+                  <p className="text-sm text-zinc-300">
+                    Experiencia única en la naturaleza
+                  </p>
+                  <p className="text-xs text-zinc-400">
+                    Guasca, Cundinamarca, Colombia
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3 text-sm">
+                  <div className="glass rounded-2xl p-3 text-center">
+                    <div className="text-emerald-300 font-semibold">4.7</div>
+                    <div className="text-zinc-400 text-xs">75 opiniones</div>
+                  </div>
+                  <div className="glass rounded-2xl p-3 text-center">
+                    <div className="text-emerald-300 font-semibold">Premium</div>
+                    <div className="text-zinc-400 text-xs">Calidad 5★</div>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setIsLogoModalOpen(false)}
+                  className="btn-primary w-full"
+                >
+                  Cerrar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <a
         href="tel:+573016477326"
         aria-label="Llamar a Glamping el Edén"
@@ -326,14 +402,33 @@ export default function Home() {
             <div className="text-center space-y-6">
               {/* Imagen Placeholder */}
               <div className="relative rounded-2xl overflow-hidden border border-white/10">
-                <img
-                  src="/glamping.webp"
-                  alt="Glamping el Edén - Experiencia única en la naturaleza"
-                  className="w-full h-64 sm:h-80 object-cover"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 text-center">
+                {/* Desktop: SVG placeholder */}
+                <div className="hidden sm:block relative w-full h-64 sm:h-80">
+                  <div className="absolute inset-0 rounded-2xl p-[3px] bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-400 animate-gradient-flow">
+                    <div className="w-full h-full rounded-2xl bg-black/40" />
+                  </div>
+                  <img
+                    src="/placeholder-domo.svg"
+                    alt="Glamping el Edén - Experiencia única en la naturaleza"
+                    className="w-full h-full object-cover relative z-10 rounded-2xl"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl" />
+                </div>
+                {/* Mobile: imagen real */}
+                <div className="sm:hidden relative w-full h-64 sm:h-80">
+                  <div className="absolute inset-0 rounded-2xl p-[3px] bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-400 animate-gradient-flow">
+                    <div className="w-full h-full rounded-2xl bg-black/40" />
+                  </div>
+                  <img
+                    src="/glamping.webp"
+                    alt="Glamping el Edén - Experiencia única en la naturaleza"
+                    className="w-full h-full object-cover relative z-10 rounded-2xl"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl" />
+                </div>
+                <div className="absolute bottom-4 left-4 right-4 text-center z-20">
                   <p className="text-xs font-semibold tracking-widest text-emerald-200/80">GLAMPING PREMIUM</p>
                 </div>
               </div>
