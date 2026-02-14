@@ -55,7 +55,7 @@ export default function UnitCard({
       {/* Imagen principal */}
       <div className="relative h-48 bg-white/5">
         <img
-          src={unit.images[0] || '/placeholder.jpg'}
+          src={unit.images[0] || '/placeholder-cabana.svg'}
           alt={unit.name}
           className="w-full h-full object-cover"
         />
