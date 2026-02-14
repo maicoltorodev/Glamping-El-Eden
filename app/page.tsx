@@ -301,7 +301,7 @@ export default function Home() {
             <div className="glass rounded-3xl p-8 max-w-sm w-full mx-auto">
               <div className="text-center space-y-6">
                 <div className="relative">
-                  <div className="h-24 w-24 rounded-full border-2 border-emerald-400/50 flex items-center justify-center mx-auto relative">
+                  <div className="h-24 w-24 rounded-full logo-glow flex items-center justify-center mx-auto relative">
                     <Image
                       src="/logo.png"
                       alt="Glamping el Edén"

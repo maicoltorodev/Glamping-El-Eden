@@ -126,6 +126,25 @@
       }
     }
 
+    /* Borde animado ligero para logo del modal */
+    .logo-glow {
+      position: relative;
+      background: linear-gradient(45deg, #34d399, #22d3ee, #34d399);
+      background-size: 200% 200%;
+      animation: logo-glow 3s ease-in-out infinite;
+    }
+
+    @keyframes logo-glow {
+      0%, 100% {
+        background-position: 0% 50%;
+        box-shadow: 0 0 8px rgba(52, 211, 153, 0.3);
+      }
+      50% {
+        background-position: 100% 50%;
+        box-shadow: 0 0 12px rgba(34, 211, 238, 0.4);
+      }
+    }
+
     /* Optimizaciones generales para móvil */
     .glass {
       backdrop-filter: blur(8px);
